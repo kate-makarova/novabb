@@ -9,7 +9,7 @@ use Symfony\Component\Routing\Attribute\Route;
 class PluginController extends AbstractController
 {
     #[Route('/api/plugins/enabled', name: 'plugins')]
-    public function lcd ..istEnabled() {
+    public function listEnabled() {
         return new JsonResponse([[
             'remoteName' => 'helloPlugin',
             'exposedModule' => './HelloComponent',

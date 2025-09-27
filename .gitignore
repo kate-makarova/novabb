@@ -1,6 +1,9 @@
 core/vendor
 core/var
+core/public/static
 core_front_src/node_modules
+core_front_src/dist
 core_front_src/.angular
 plugins/*/node_modules
 plugins/*/.angular
+plugins/*/dist

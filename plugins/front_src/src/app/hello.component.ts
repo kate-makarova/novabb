@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 
 @Component({
   selector: 'hello-plugin',
@@ -8,4 +8,9 @@ import { Component } from '@angular/core';
              </div>`,
   standalone: false
 })
-export class HelloComponent {}
+export class HelloComponent {
+  constructor(@Inject('TestService') public testService: any) {
+    // hostService is now available here
+    this.testService.log('Hello from plugin!');
+  }
+}
