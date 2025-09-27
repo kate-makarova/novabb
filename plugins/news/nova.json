@@ -1,0 +1,11 @@
+{
+  "title": "Forum News",
+  "author": "viper",
+  "version": "0.1",
+  "min_forum_version": "0.1",
+  "widgets": {
+    "header": ["NewsComponent"]
+  },
+  "pages": {
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "title": "",
+  "author": "",
+  "version": "",
+  "min_forum_version": "",
+  "widgets": {
+    "header": ["HelloComponent"]
+  },
+  "pages": {
+    "hello": "HelloComponent2"
+  }
+}
