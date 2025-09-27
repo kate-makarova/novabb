@@ -21,10 +21,10 @@ class Subforum
     private string $description;
 
     #[ORM\ManyToOne(targetEntity: Subforum::class, inversedBy: 'subforums')]
-    private ?Subforum $parent_subforum = null;
+    private ?Subforum $parentSubforum = null;
 
     #[ORM\ManyToOne(targetEntity: Category::class, inversedBy: 'subforums')]
-    private Category $parent_category;
+    private Category $parentCategory;
 
     #[ORM\Column]
     private int $position;
@@ -61,22 +61,22 @@ class Subforum
 
     public function getParentSubforum(): ?int
     {
-        return $this->parent_subforum;
+        return $this->parentSubforum;
     }
 
-    public function setParentSubforum(?int $parent_subforum): void
+    public function setParentSubforum(?int $parentSubforum): void
     {
-        $this->parent_subforum = $parent_subforum;
+        $this->parentSubforum = $parentSubforum;
     }
 
     public function getParentCategory(): ?int
     {
-        return $this->parent_category;
+        return $this->parentCategory;
     }
 
-    public function setParentCategory(?int $parent_category): void
+    public function setParentCategory(?int $parentCategory): void
     {
-        $this->parent_category = $parent_category;
+        $this->parentCategory = $parentCategory;
     }
 
     public function getPosition(): int

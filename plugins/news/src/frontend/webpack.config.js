@@ -3,7 +3,8 @@ const { shareAll, withModuleFederationPlugin } = require('@angular-architects/mo
 module.exports = withModuleFederationPlugin({
   name: 'helloPlugin',
   exposes: {
-    './HelloComponent': './src/hello.component.ts'
+    './plugins/news/NewsComponent': './src/news.component.ts',
+    './plugins/news/NewsModel': './src/news.model.ts',
   },
 
   shared: {
