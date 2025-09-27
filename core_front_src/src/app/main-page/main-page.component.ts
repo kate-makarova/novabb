@@ -5,11 +5,11 @@ import {ApiService} from '../services/api.service';
   templateUrl: './main-page.component.html',
 })
 export class MainPageComponent implements OnInit {
-  response: string | undefined;
+  categories: Category[] = [];
   constructor(private apiService: ApiService) {}
     ngOnInit(): void {
        this.apiService.get('/main').subscribe((res: any) => {
-         this.response = res.response;
+         this.categories = res;
        })
     }
 

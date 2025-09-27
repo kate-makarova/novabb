@@ -7,7 +7,7 @@ import {PluginConfig} from './plugun_config';
 export class PluginService {
   private http = inject(HttpClient);
 
-  loadPlugins() {
-    return this.http.get<PluginConfig[]>('http://localhost:8000/api/plugins/enabled');
+  loadPlugins(type: string) {
+    return this.http.get<PluginConfig[]>('http://localhost:8000/api/plugins/enabled/'+type);
   }
 }

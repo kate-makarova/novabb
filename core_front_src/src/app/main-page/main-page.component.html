@@ -1,3 +1,15 @@
-<div>Index page <br />
-  The ultimate answer: {{ response }}
+<div id="main-page">
+  @for (category of categories; track category.id) {
+    <div class="category">
+      <h2>{{ category.title }}</h2>
+
+      <ul class="subforums">
+        @for (subforum of category.subforums; track subforum.id) {
+        <li>
+          {{ subforum.title }}
+        </li>
+        }
+      </ul>
+    </div>
+  }
 </div>
