@@ -2,8 +2,8 @@ import { Component, AfterViewInit, ViewContainerRef, inject,
   Injector, ComponentRef } from '@angular/core';
 import {PluginService} from '../plugins/plugin.service';
 import { loadRemoteModule } from '@angular-architects/module-federation';
-import {TestService} from '../services/test.service';
 import {PluginConfig} from '../plugins/plugin_config';
+import {ApiService} from '../services/api.service';
 
 @Component({
   selector: 'app-header',
@@ -16,7 +16,7 @@ export class HeaderComponent implements AfterViewInit {
   constructor(
     private pluginService: PluginService,
     private injector: Injector,
-    private testService: TestService
+    private apiService: ApiService
   ) { }
 
   async ngAfterViewInit() {
@@ -30,7 +30,7 @@ export class HeaderComponent implements AfterViewInit {
         const compRef: ComponentRef<any> = this.vcr.createComponent(component, {
           injector: Injector.create({
             providers: [
-              { provide: 'TestService', useValue: this.testService }
+              { provide: 'ApiService', useValue: this.apiService }
             ],
             parent: this.injector
           })

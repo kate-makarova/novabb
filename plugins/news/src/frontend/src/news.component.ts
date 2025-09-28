@@ -13,15 +13,17 @@ import {News} from "./news.model";
 })
 export class NewsComponent implements OnInit {
     protected news: News[] = [];
-  // constructor(@Inject('TestService') public testService: any) {
-  //   // hostService is now available here
-  //   this.testService.log('Hello from plugin!');
-  // }
+
+  constructor(@Inject('ApiService') public apiService: any) {
+  }
 
     ngOnInit(): void {
-        const news: News[] = [
-            new News(1, 'Test', 'This is test news')
-        ];
-        this.news = news;
+        this.apiService.get('/plugins/nova-basic-news/list').subscribe((res: any) => {
+            this.news = res;
+        })
+        // const news: News[] = [
+        //     new News(1, 'Test', 'This is test news')
+        // ];
+        // this.news = news;
     }
 }
