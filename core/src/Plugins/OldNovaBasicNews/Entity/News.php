@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Plugins\NovaBasicNews\Entity;
+namespace App\Plugins\OldNovaBasicNews\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 

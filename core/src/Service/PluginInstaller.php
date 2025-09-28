@@ -49,7 +49,7 @@ class PluginInstaller
         if (json_last_error() !== JSON_ERROR_NONE) {
             throw new \RuntimeException("Invalid JSON in nova.json");
         }
-        $pluginName = $metadata['vendorName'] + $metadata['pluginName'];
+        $pluginName = $metadata['vendorName'] . $metadata['pluginName'];
 
 
         // Move extracted plugin into src/Plugins
@@ -62,7 +62,7 @@ class PluginInstaller
     }
 
     private function installMetadata(array $metadata) {
-        $pluginName =$metadata['vendorName'] + $metadata['pluginName'];
+        $pluginName =$metadata['vendorName'] . $metadata['pluginName'];
         $config = new PluginConfig();
         $config->remoteName = $pluginName;
         $config->remoteEntry = "/plugins/{$pluginName}/remoteEntry.js";
