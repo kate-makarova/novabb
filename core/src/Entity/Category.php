@@ -20,7 +20,7 @@ class Category
     #[ORM\Column]
     private int $position;
 
-    #[ORM\OneToMany(targetEntity: Subforum::class, mappedBy: 'parent_category')]
+    #[ORM\OneToMany(targetEntity: Subforum::class, mappedBy: 'parentCategory')]
     #[ORM\OrderBy(['position' => 'ASC'])]
     private Collection $subforums;
 

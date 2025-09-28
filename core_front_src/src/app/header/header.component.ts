@@ -25,7 +25,7 @@ export class HeaderComponent implements AfterViewInit {
       for (let pluginConfig of plugins) {
         const module = await loadRemoteModule(pluginConfig);
         console.log(module);
-        const component = module.HelloComponent; // exported from plugin module
+        const component = module.NewsComponent; // exported from plugin module
 
         const compRef: ComponentRef<any> = this.vcr.createComponent(component, {
           injector: Injector.create({

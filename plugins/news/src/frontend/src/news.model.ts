@@ -1,4 +1,4 @@
-class News {
+export class News {
     id: number;
     name: string;
     content: string;

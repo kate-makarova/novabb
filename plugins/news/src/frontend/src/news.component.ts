@@ -1,4 +1,5 @@
 import {Component, Inject, OnInit} from '@angular/core';
+import {News} from "./news.model";
 
 @Component({
   selector: 'news-plugin',
@@ -8,7 +9,7 @@ import {Component, Inject, OnInit} from '@angular/core';
                <p>{{ newsItem.content }}</p>
              </div>
   }`,
-  standalone: false
+  standalone: true
 })
 export class NewsComponent implements OnInit {
     protected news: News[] = [];

@@ -18,9 +18,7 @@ class PluginController extends AbstractController
         $response_data = [];
         foreach ($widgetPlugins as $widgetPlugin) {
             $plugin = $widgetPlugin->getPlugin();
-            $response_data[] = [
-                $plugin->getPluginConfig()
-            ];
+            $response_data[] = $plugin->getPluginConfig();
         }
         return new JsonResponse($response_data);
 //        return new JsonResponse([[
@@ -31,10 +29,17 @@ class PluginController extends AbstractController
     }
 
     #[Route('/api/manifest', name: 'plugin_manifest')]
-    public function manifest() {
-        return new JsonResponse([
-        //    'helloPlugin' => '/plugins/helloPlugin/remoteEntry.js',
-        ]);
+    public function manifest(EntityManagerInterface $entityManager) {
+        $plugins = $entityManager->getRepository(Plugin::class)->findBy(['isEnabled' => true]);
+        $response_data = [];
+        foreach ($plugins as $plugin) {
+            $config = $plugin->getPluginConfig();
+            $response_data[$config->remoteName] = $config->remoteEntry;
+        }
+        return new JsonResponse($response_data);
+//        return new JsonResponse([
+//        //    'helloPlugin' => '/plugins/helloPlugin/remoteEntry.js',
+//        ]);
     }
 
 }
