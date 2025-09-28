@@ -6,7 +6,7 @@
   "version": "0.1",
   "min_forum_version": "0.1",
   "widgets": {
-    "header": ["./plugins/novaBasicNews/NewsComponent"]
+    "header": ["NewsComponent"]
   },
   "pages": {
   }

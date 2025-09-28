@@ -1,6 +1,6 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import {PluginConfig} from './plugun_config';
+import {PluginConfig} from './plugin_config';
 
 
 @Injectable({ providedIn: 'root' })

@@ -18,14 +18,11 @@ class PluginController extends AbstractController
         $response_data = [];
         foreach ($widgetPlugins as $widgetPlugin) {
             $plugin = $widgetPlugin->getPlugin();
-            $response_data[] = $plugin->getPluginConfig();
+            $data = $plugin->getPluginConfig();
+            $data->componentName = $widgetPlugin->getComponentName();
+            $response_data[] = $data;
         }
         return new JsonResponse($response_data);
-//        return new JsonResponse([[
-//            'remoteName' => 'helloPlugin',
-//            'exposedModule' => './HelloComponent',
-//            'remoteEntry' => '/plugins/helloPlugin/remoteEntry.js'
-//        ]]);
     }
 
     #[Route('/api/manifest', name: 'plugin_manifest')]

@@ -2,9 +2,8 @@ import { Component, AfterViewInit, ViewContainerRef, inject,
   Injector, ComponentRef } from '@angular/core';
 import {PluginService} from '../plugins/plugin.service';
 import { loadRemoteModule } from '@angular-architects/module-federation';
-import {PluginConfig} from '../plugins/plugun_config';
 import {TestService} from '../services/test.service';
-import {Router} from '@angular/router';
+import {PluginConfig} from '../plugins/plugin_config';
 
 @Component({
   selector: 'app-header',
@@ -22,10 +21,11 @@ export class HeaderComponent implements AfterViewInit {
 
   async ngAfterViewInit() {
     this.pluginService.loadPlugins('header').subscribe(async plugins => {
-      for (let pluginConfig of plugins) {
-        const module = await loadRemoteModule(pluginConfig);
+      for (let pluginConfigObj of plugins) {
+        const pluginConfig: PluginConfig = PluginConfig.init(pluginConfigObj);
+        const module = await loadRemoteModule(pluginConfig.toLoadRemoteModuleOptions());
         console.log(module);
-        const component = module.NewsComponent; // exported from plugin module
+        const component = module[pluginConfig.componentName]; // exported from plugin module
 
         const compRef: ComponentRef<any> = this.vcr.createComponent(component, {
           injector: Injector.create({
@@ -36,8 +36,6 @@ export class HeaderComponent implements AfterViewInit {
           })
         });
       }
-
-    //  compRef.instance.testService.log('Hello from plugin!');
     })
   }
 }

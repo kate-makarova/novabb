@@ -19,6 +19,9 @@ class PluginWidget
     #[ORM\Column(type: 'string', length: 255)]
     private string $widgetName;
 
+    #[ORM\Column(type: 'string', length: 255)]
+    private string $componentName;
+
     /**
      * @return mixed
      */
@@ -54,4 +57,16 @@ class PluginWidget
     {
         $this->widgetName = $widgetName;
     }
+
+    public function getComponentName(): string
+    {
+        return $this->componentName;
+    }
+
+    public function setComponentName(string $componentName): void
+    {
+        $this->componentName = $componentName;
+    }
+
+
 }
