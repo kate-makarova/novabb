@@ -1,11 +1,12 @@
 {
-  "name": "nova_basic__news",
+  "package_name": "nova_basic/news",
+  "plugin_mame": "novaBasicNews",
   "title": "Forum News",
   "author": "viper",
   "version": "0.1",
   "min_forum_version": "0.1",
   "widgets": {
-    "header": ["./plugins/news/NewsComponent"]
+    "header": ["./plugins/novaBasicNews/NewsComponent"]
   },
   "pages": {
   }
