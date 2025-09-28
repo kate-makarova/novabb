@@ -1,41 +1,14 @@
-import { Component, AfterViewInit, ViewContainerRef, inject,
-  Injector, ComponentRef } from '@angular/core';
-import {PluginService} from '../plugins/plugin.service';
-import { loadRemoteModule } from '@angular-architects/module-federation';
-import {PluginConfig} from '../plugins/plugin_config';
-import {ApiService} from '../services/api.service';
+import {Component, AfterViewInit} from '@angular/core';
+import {InjectableComponent} from '../core-abstaract-components/injectable.component';
 
 @Component({
   selector: 'app-header',
   standalone: true,
   template: `<ng-container #vc></ng-container>`
 })
-export class HeaderComponent implements AfterViewInit {
-  private vcr = inject(ViewContainerRef);
+export class HeaderComponent extends InjectableComponent implements AfterViewInit {
 
-  constructor(
-    private pluginService: PluginService,
-    private injector: Injector,
-    private apiService: ApiService
-  ) { }
-
-  async ngAfterViewInit() {
-    this.pluginService.loadPlugins('header').subscribe(async plugins => {
-      for (let pluginConfigObj of plugins) {
-        const pluginConfig: PluginConfig = PluginConfig.init(pluginConfigObj);
-        const module = await loadRemoteModule(pluginConfig.toLoadRemoteModuleOptions());
-        console.log(module);
-        const component = module[pluginConfig.componentName]; // exported from plugin module
-
-        const compRef: ComponentRef<any> = this.vcr.createComponent(component, {
-          injector: Injector.create({
-            providers: [
-              { provide: 'ApiService', useValue: this.apiService }
-            ],
-            parent: this.injector
-          })
-        });
-      }
-    })
+  override getComponentName(): string {
+    return 'header';
   }
 }

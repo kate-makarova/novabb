@@ -1,15 +1,16 @@
 <div id="main-page">
   @for (category of categories; track category.id) {
-    <div class="category">
-      <h2>{{ category.title }}</h2>
-
-      <ul class="subforums">
-        @for (subforum of category.subforums; track subforum.id) {
-        <li>
-          {{ subforum.title }}
-        </li>
-        }
-      </ul>
-    </div>
+<section class="categories">
+  <h5>{{ category.title }}</h5>
+  <div class="forum-list">
+    @for (subforum of category.subforums; track subforum.id) {
+    <article class="forum">
+      <h6><a href="/forum/{{ subforum.id }}">{{ subforum.title }}</a></h6>
+      <p>Talk about anything and everything.</p>
+      <p><strong>Threads:</strong> 120 | <strong>Posts:</strong> 1,200</p>
+    </article>
+    }
+  </div>
+</section>
   }
 </div>
