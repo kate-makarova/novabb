@@ -1,9 +1,9 @@
 <?php
 
-namespace Plugins\NovaBasicNews\Controllers;
+namespace App\Plugins\NovaBasicNews\Controller;
 
 use Doctrine\ORM\EntityManagerInterface;
-use Plugins\NovaBasicNews\Entities\News;
+use Plugins\NovaBasicNews\Entity\News;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Attribute\Route;

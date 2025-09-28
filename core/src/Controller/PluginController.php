@@ -4,7 +4,6 @@ namespace App\Controller;
 
 use App\Entity\Plugin;
 use App\Entity\PluginWidget;
-use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -34,9 +33,11 @@ class PluginController extends AbstractController
             $response_data[$config->remoteName] = $config->remoteEntry;
         }
         return new JsonResponse($response_data);
-//        return new JsonResponse([
-//        //    'helloPlugin' => '/plugins/helloPlugin/remoteEntry.js',
-//        ]);
+    }
+
+    #[Route('/api//install/{pluginName}', name: 'plugin_install')]
+    public function install(EntityManagerInterface $entityManager) {
+
     }
 
 }

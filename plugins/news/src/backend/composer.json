@@ -8,7 +8,7 @@
   },
   "autoload": {
     "psr-4": {
-      "Plugins\\NovaBasicNews\\": "src/"
+      "App\\Plugins\\NovaBasicNews\\": "src/"
     }
   }
 }

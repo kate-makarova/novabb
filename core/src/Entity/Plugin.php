@@ -127,7 +127,7 @@ class Plugin
 
     public function setPluginConfig(PluginConfig $pluginConfig): void
     {
-        $this->pluginConfig = $pluginConfig;
+        $this->pluginConfig = $pluginConfig->toArray();
     }
 
     public function getPluginWidgets(): Collection
