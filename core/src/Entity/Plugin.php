@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity]
@@ -33,8 +34,8 @@ class Plugin
     #[ORM\Column]
     private bool $isEnabled;
 
-    #[ORM\Column(type: 'json_document')]
-    private PluginConfig $pluginConfig;
+    #[ORM\Column(type: Types::JSON)]
+    private array $pluginConfig;
 
     #[ORM\OneToMany(targetEntity: PluginWidget::class, mappedBy: 'plugin')]
     private Collection $pluginWidgets;
@@ -116,7 +117,12 @@ class Plugin
 
     public function getPluginConfig(): PluginConfig
     {
-        return $this->pluginConfig;
+        $data = $this->pluginConfig;
+        $obj = new PluginConfig();
+        $obj->remoteEntry = $data['remoteEntry'];
+        $obj->remoteName = $data['remoteName'];
+        $obj->exposedModule = $data['exposedModule'];
+        return $obj;
     }
 
     public function setPluginConfig(PluginConfig $pluginConfig): void
