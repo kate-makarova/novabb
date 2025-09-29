@@ -1,13 +1,10 @@
-import {
-  Component, AfterViewInit, ViewContainerRef, Injector, ViewChild
-} from '@angular/core';
+import {AfterViewInit, ViewContainerRef, Injector, ViewChild, Directive} from '@angular/core';
 import {PluginService} from '../plugins/plugin.service';
 import { loadRemoteModule } from '@angular-architects/module-federation';
 import {PluginConfig} from '../plugins/plugin_config';
 import {ApiService} from '../services/api.service';
 
-@Component({
-})
+@Directive()
 export abstract class InjectableComponent implements AfterViewInit {
   @ViewChild('vc', { read: ViewContainerRef, static: true })
   private vcr!: ViewContainerRef;
