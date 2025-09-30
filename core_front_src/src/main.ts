@@ -1,7 +1,9 @@
 import { initFederation } from '@angular-architects/module-federation';
+import {environment} from './environments/environment';
 
 async function loadPlugins() {
-  const response = await fetch('http://localhost:8000/api/manifest');
+  const baseUrl = environment.apiUrl;
+  const response = await fetch(baseUrl + '/api/manifest');
   const plugins: Record<string, string> = await response.json();
   console.log(plugins);
 

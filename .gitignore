@@ -1,6 +1,7 @@
 core/vendor
 core/var
 core/public/static
+core/.env.prod
 core_front_src/node_modules
 core_front_src/dist
 core_front_src/.angular

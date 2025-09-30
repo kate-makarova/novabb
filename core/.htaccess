@@ -1,0 +1,15 @@
+RewriteEngine On
+RewriteBase /
+
+# Set the default file for the root directory
+DirectoryIndex public/static/index.html index.php index.html
+
+# 1. API backend: all /api/... requests go to api.php
+RewriteRule ^api/.*$ public/api/index.php [QSA,L]
+
+# 2. Prevent the Angular catch-all from affecting existing files/directories
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# 3. Angular catch-all
+RewriteRule ^.*$ public/static/index.html [L]

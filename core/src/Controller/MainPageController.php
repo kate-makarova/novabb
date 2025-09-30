@@ -37,4 +37,10 @@ class MainPageController extends AbstractController
 
         return new JsonResponse($response_data);
     }
+
+    #[Route('/api/test', name: 'test_page')]
+    public function testPage(): JsonResponse {
+        return new JsonResponse(['test' => true]);
+    }
+
 }
